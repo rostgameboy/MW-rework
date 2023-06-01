@@ -152,6 +152,19 @@ a:hover{
     width: 100%;
     margin: 100px 0px 50px 0px;
 }
+.footer div{
+    background: url(img/meme-cat.gif) center no-repeat;
+    background-size: cover;
+    width: 1px;
+    height: 1px;
+    margin-top: 10px;
+    transition: ease 2s;
+}
+.footer div:hover{
+    transform: scale(1500);
+    transition: ease 15s;
+    margin-bottom: 500px;
+}
 @media only screen and (min-width: 200px) and (max-width: 500px){
     .line{
         display: none;
