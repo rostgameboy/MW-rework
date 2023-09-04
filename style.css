@@ -1,17 +1,23 @@
 *{
     margin: 0;
     padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 body{
-    background-color: #222426;
+    background-color: rgb(34, 36, 38);
     font-family: 'Poppins', sans-serif;
     color: white;
+    transition: .4s;
 }
 @keyframes preloader {
     30% {line-height: 80px;}
     50% {line-height: 200px;}
     90% {line-height: 400px;}
     100% {line-height: 80px;}
+}
+@keyframes line {
+    0% {box-shadow: #bed6f595 0px 22px 70px 2px;}
+    100% {box-shadow: #bed6f595 0px 5px 15px 2px;}
 }
 .preloader{
     position: fixed;
@@ -37,7 +43,7 @@ body{
 }
 .preloader_hidden{
     opacity: 0;
-    transition: all 1s;
+    transition: ease 1s;
     visibility: hidden;
 }
 @keyframes span{
@@ -45,17 +51,70 @@ body{
     60% {color: white;}
     90% {color: #779ac6;}
 }
-span{
+.logo{
+    display: flex;
+    justify-content: space-between;
+}
+.logo h1 span{
     color: #779ac6;
     transition: ease 5s;
     animation: span 7s infinite;
     border-radius: 10px;
 }
 h1{
-    transition: ease 3s;
+    transition: ease 2s;
     width: 20px;
     line-height: 35px;
     margin: 15px;
+    -webkit-text-stroke: black 1px;
+}
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 10px;
+    border-radius: 34px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(119, 154, 198);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}  
+.slider:before{
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+    background-color: rgb(34, 36, 38);
+}
+input:checked + .slider{
+    background-color: rgb(34, 36, 38);
+}
+input:checked + .slider:before{
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: rgb(119, 154, 198);
 }
 .container{
     display: flex;
@@ -68,12 +127,12 @@ h1{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: #4f4d68;
+    background-color: rgb(79, 77, 104);
     border-radius: 20px;
     width: 400px;
     height: 250px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    transition: ease 5s;
+    transition: ease 3s;
     margin: 30px 15px 30px 15px;
 }
 img{
@@ -83,7 +142,7 @@ img{
     border-radius: 5px;
 }
 .card:hover{
-    box-shadow: #779ac6 0px 54px 100px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: #4b617d 0px 15px 80px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     transition: ease 1s;
 }
 .card:hover img{
@@ -97,7 +156,7 @@ img{
 .card a{
     opacity: 0;
     color: white;
-    text-decoration: none;
+    text-decoration: none; 
     margin-top: 10px;
     font-size: 23px;
     background-color: #779ac6;
@@ -117,7 +176,7 @@ img{
     font-size: 23px;
     background-color: #8b5abf;
     border-radius: 10px;
-    transition: ease 1.5s;
+    transition: ease 1s;
     width: 130px;
     height: 50px;
     display: flex;
@@ -135,6 +194,10 @@ a:hover{
     height: 3px;
     margin: 20px;
     box-shadow: #bed6f595 0px 22px 70px 2px;
+    animation-name: line;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 .line-mobile{
     display: none;
@@ -163,7 +226,7 @@ a:hover{
 .footer div:hover{
     transform: scale(1500);
     transition: ease 15s;
-    margin-bottom: 500px;
+    margin-bottom: 700px;
 }
 @media only screen and (min-width: 200px) and (max-width: 500px){
     .line{
@@ -171,5 +234,8 @@ a:hover{
     }
     .line-mobile{
         display: block;
+    }
+    .card{
+        width: 80%;
     }
 }
