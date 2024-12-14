@@ -101,7 +101,6 @@ h1{
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 50%;
@@ -228,7 +227,7 @@ a:hover{
     transition: ease 15s;
     margin-bottom: 700px;
 }
-@media only screen and (min-width: 200px) and (max-width: 500px){
+@media only screen and (min-width: 200px) and (max-width: 600px){
     .line{
         display: none;
     }
